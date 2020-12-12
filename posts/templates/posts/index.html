@@ -1,18 +1,19 @@
-<table class = "table" border=1>
-    <thead>
-        <tr>
-            <th>景點名稱</th>
-            <th>景點位置</th>
-            <th>作者</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for post in posts %}
-            <tr>
-                <td>{{post.subject}}</td>
-                <td>{{post.location}}</td>
-                <td>{{post.author}}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{%extends 'base.html'%}
+
+{%block content%}
+<div class = 'row'>
+    {% for article in articles %}
+        <div class='col-lg-4'>
+
+            <div class="card" style="width: 18rem;">
+                <img src="{{article.thumb}}" class="card-img-top" alt="..." stlye='hi:'>
+                <div class="card-body">
+                    <h5 class="card-title">{{article.user.display_name}}</h5>
+                    <p class="card-text">{{article.title|slice:"0:25"}}...</p>
+                    <a href="{{article.link}}" class="btn btn-primary">content</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{%endblock%}
